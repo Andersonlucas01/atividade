@@ -1,0 +1,26 @@
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+readline.question('Digite o comprimento do lado A: ', (ladoA) => {
+  readline.question('Digite o comprimento do lado B: ', (ladoB) => {
+    readline.question('Digite o comprimento do lado C: ', (ladoC) => {
+      if (ladoA + ladoB <= ladoC || ladoA + ladoC <= ladoB || ladoB + ladoC <= ladoA) {
+        console.log('Os lados não formam um triângulo válido!');
+        readline.close();
+        return;
+      }
+
+      if (ladoA === ladoB && ladoB === ladoC) {
+        console.log('O triângulo é equilátero!');
+      } else if (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC) {
+        console.log('O triângulo é isósceles!');
+      } else {
+        console.log('O triângulo é escaleno!');
+      }
+
+      readline.close();
+    });
+  });
+});
