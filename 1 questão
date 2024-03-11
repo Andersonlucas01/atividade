@@ -1,0 +1,24 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Digite seu peso em kg: ', (peso) => {
+  rl.question('Digite sua altura em metros: ', (altura) => {
+    const imc = parseFloat(peso) / (parseFloat(altura) ** 2);
+
+    let categoria;
+    if (imc < 18.5) categoria = "Abaixo do peso";
+    else if (imc <= 24.9) categoria = "Peso normal";
+    else if (imc <= 29.9) categoria = "Excesso de peso";
+    else if (imc <= 34.9) categoria = "Obesidade grau I";
+    else if (imc <= 39.9) categoria = "Obesidade grau II";
+    else categoria = "Obesidade grau III";
+
+    console.log(`Seu IMC é: ${imc.toFixed(2)}\nCategoria: ${categoria}`);
+
+    rl.close();
+  });
+});
