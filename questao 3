@@ -1,0 +1,21 @@
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  
+  readline.question('Digite sua data de nascimento (dd/mm/aaaa): ', (dataStr) => {
+    const data = dataStr.split('/');
+  
+    const hoje = new Date();
+    const dataNascimento = new Date(data[2], data[1] - 1, data[0]);
+    const idade = Math.floor((hoje - dataNascimento) / (1000 * 60 * 60 * 24 * 365.25));
+  
+    if (idade >= 18) {
+      console.log('Você é maior de idade!');
+    } else {
+      console.log('Você é menor de idade!');
+    }
+  
+    readline.close();
+  });
+  
